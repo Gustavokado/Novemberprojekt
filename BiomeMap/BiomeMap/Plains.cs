@@ -11,7 +11,7 @@ namespace BiomeMap
         public Plains(int x, int y, int startX, int startY, int size) : base(x, y, startX, startY, size)
         {
             display = "H";
-            
+            biome = "plains";
             
         }
         public override void printTile(int topPosX, int topPosY)

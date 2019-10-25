@@ -16,15 +16,27 @@ namespace BiomeMap
         public string biome;
         public static Random random = new Random();
         //public static List<Tile> tiles = new List<Tile> { };
-        public static Tile[,] tiles = new Tile[60, 60];
+        public static Tile[,] tiles = new Tile[150, 80];
         public static int amount = 0;
+        public bool noSpread = false;
 
         public Tile(int xPos, int yPos, int startX, int startY, int size)
         {
             x = xPos;
             y = yPos;
             tiles[x, y] = this;
-            this.spread(startX,  startY, size, random.Next(0,size/2));
+           
+        }
+
+        public void CheckNearby(int startX, int startY, int size)
+        {
+            for (int i = y - 1; i <= y + 1; i++)
+            {
+                for (int u = x - 1; u <= x + 1; u++)
+                {
+                    spread(u, i, startX, startY, size);                   
+                }
+            }
         }
 
         public virtual void printTile(int topPosX, int topPosY)
@@ -34,7 +46,7 @@ namespace BiomeMap
             Console.Write("T");
         }
 
-        public virtual void spread(int startX, int startY, int size, int randomizer)
+        public virtual void spread(int x, int y, int startX, int startY, int size)
         {
 
         }

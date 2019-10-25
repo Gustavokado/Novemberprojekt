@@ -12,38 +12,45 @@ namespace BiomeMap
         static void Main(string[] args)
         {
 
-            /*for (int y = 0; y < Tile.tiles.GetLength(1); y++)
+            for (int y = 0; y < Tile.tiles.GetLength(1); y++)
             {
                 for (int x = 0; x < Tile.tiles.GetLength(0); x++)
                 {
-                    Tile.tiles[x, y] = new Plains(x, y, x, y, 1);                                      
+                    new Plains(x, y, x, y, 1);                                      
+                }
+            }
+
+           /* for (int y = 0; y < Tile.tiles.GetLength(1); y++)
+            {
+                for (int x = 0; x < Tile.tiles.GetLength(0); x++)
+                {
+
+
+                    Tile.tiles[x, y].printTile(0, 0);
+                    // Thread.Sleep(5);
                 }
             }*/
 
-           
-            int forests = Tile.random.Next(1, 5);
+            int forests = Tile.random.Next(5, 70);
             for (int i = 0; i < forests; i++)
             {
                 int x = Tile.random.Next(Tile.tiles.GetLength(0));
                 int y = Tile.random.Next(Tile.tiles.GetLength(1));
-                new Forest(x, y, x, y, Tile.random.Next(5, 20));
+                new Forest(x, y, x, y, Tile.random.Next(3, 35));
             }
-            new Forest(30, 30, 30, 30, Tile.random.Next(5,40));
+            //new Forest(30, 30, 30, 30, Tile.random.Next(5,40));
 
 
-            //Tile.tiles.Add(new Forest(10, 10, 10, 10));
+           
 
 
             for (int y = 0; y < Tile.tiles.GetLength(1); y++)
             {
                 for (int x = 0; x < Tile.tiles.GetLength(0); x++)
                 {
-                   
-                    if (Tile.tiles[x,y]==null)
-                    {
-                        Tile.tiles[x, y] = new Plains(x, y, x, y, 1);
-                    }
                     Tile.tiles[x, y].printTile(0, 0);
+
+
                     // Thread.Sleep(5);
                 }
             }
