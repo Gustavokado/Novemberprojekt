@@ -8,11 +8,15 @@ namespace BiomeMap
 {
     class Mountain: Tile
     {
-        public Mountain(int x, int y, int startX, int startY, int size) : base(x, y, startX, startY, size)
+        public Mountain(int x, int y, int startX, int startY, int size, bool isStartTile) : base(x, y, startX, startY, size)
         {
             biome = "mountain";
             display = "A";
-            CheckNearby(startX, startY, size);
+            if (!isStartTile)
+            {
+                CheckNearby(startX, startY, size);
+            }
+            
         }
         public override void printTile(int topPosX, int topPosY)
         {

@@ -43,8 +43,8 @@ namespace BiomeMap
             {
                 int x = Tile.random.Next(Tile.tiles.GetLength(0));
                 int y = Tile.random.Next(Tile.tiles.GetLength(1));
-                new Mountain(x, y, x, y, Tile.random.Next(5, 30));
-                Tile.tiles[x, y].isStartTile = true;
+                new Mountain(x, y, x, y, Tile.random.Next(5, 30), true);
+                //Tile.tiles[x, y].isStartTile = true;
             }
 
 
