@@ -20,32 +20,13 @@ namespace BiomeMap
                 }
             }
 
-
-           /* for (int y = 0; y < Tile.tiles.GetLength(1); y++)
-            {
-                for (int x = 0; x < Tile.tiles.GetLength(0); x++)
-                {
-
-
-                    Tile.tiles[x, y].printTile(0, 0);
-                    // Thread.Sleep(5);
-                }
-            }*/
-
-            int forests = Tile.random.Next(5, 20);
-
             int forests = Tile.random.Next(5, 70);
-
             for (int i = 0; i < forests; i++)
             {
                 int x = Tile.random.Next(Tile.tiles.GetLength(0));
                 int y = Tile.random.Next(Tile.tiles.GetLength(1));
-
-                new Forest(x, y, x, y, Tile.random.Next(1, 35));
-
                 new Forest(x, y, x, y, Tile.random.Next(3, 35));
                 Tile.tiles[x, y].isStartTile = true;
-
             }
             //new Forest(30, 30, 30, 30, Tile.random.Next(5,40));
 
