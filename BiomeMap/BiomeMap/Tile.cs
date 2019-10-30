@@ -33,21 +33,23 @@ namespace BiomeMap
             {
                 for (int u = x - 1; u <= x + 1; u++)
                 {
-                    spread(u, i, startX, startY, size);                   
+                    Spread(u, i, startX, startY, size);                   
                 }
             }
         }
 
-        public virtual void printTile(int topPosX, int topPosY)
+        public virtual void PrintTile(int topPosX, int topPosY)
         {
             Console.CursorLeft = (x*2)+topPosX*2;
             Console.CursorTop = y + topPosY;
             Console.Write("T");
         }
 
-        public virtual void spread(int x, int y, int startX, int startY, int size)
+        public virtual void Spread(int x, int y, int startX, int startY, int size)
         {
 
         }
+
+        
     }
 }
