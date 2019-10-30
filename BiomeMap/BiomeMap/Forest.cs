@@ -44,9 +44,9 @@ namespace BiomeMap
                 amount++;
                 int xDif = startX - x;
                 int yDif = startY - y;
+
                 if (Tile.random.Next(size) > Math.Sqrt(xDif * xDif + yDif * yDif))
                 {
-
                     newTile = new Forest(x, y, startX, startY, size);
                     //this.printTile(0, 0);
                 }

@@ -31,12 +31,12 @@ namespace BiomeMap
                 }
             }*/
 
-            int forests = Tile.random.Next(5, 70);
+            int forests = Tile.random.Next(5, 20);
             for (int i = 0; i < forests; i++)
             {
                 int x = Tile.random.Next(Tile.tiles.GetLength(0));
                 int y = Tile.random.Next(Tile.tiles.GetLength(1));
-                new Forest(x, y, x, y, Tile.random.Next(3, 35));
+                new Forest(x, y, x, y, Tile.random.Next(1, 35));
             }
             //new Forest(30, 30, 30, 30, Tile.random.Next(5,40));
 
