@@ -63,18 +63,23 @@ namespace BiomeMap
             {
                 int x = Tile.random.Next(Tile.tiles.GetLength(0));
                 int y = Tile.random.Next(Tile.tiles.GetLength(1));
-                Mountain.mountains.Add (new Mountain(x, y, x, y, Tile.random.Next(5, 30),true));
+                Mountain.mountains.Add (new Mountain(x, y, x, y, 0,true));
                 Tile.tiles[x, y].isStartTile = true;               
             }
 
-            for (int i = 0; i < Mountain.mountains.Count; i++)
+            /*for (int i = 0; i < Mountain.mountains.Count; i++)
             {
                 Mountain.mountains[i].CheckForMountainsInRange(Mountain.mountains, 15); //15 is range
-            }
+            }*/
+
+            /*for (int i = 0; i < Mountain.mountains.Count; i++)
+            {
+                Mountain.mountains[i].ConnectMountains();
+            }*/
 
             for (int i = 0; i < Mountain.mountains.Count; i++)
             {
-                Mountain.mountains[i].CheckNearby(Mountain.mountains[i].x, Mountain.mountains[i].y, Tile.random.Next(5, 30));
+                Mountain.mountains[i].CheckNearby(Mountain.mountains[i].x, Mountain.mountains[i].y, Tile.random.Next(20, 40));
             }
 
 
