@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="Forest.cs" />
     <Compile Include="Mountain.cs" />
+    <Compile Include="MountainBetween.cs" />
+    <Compile Include="MountainStart.cs" />
     <Compile Include="Plains.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
