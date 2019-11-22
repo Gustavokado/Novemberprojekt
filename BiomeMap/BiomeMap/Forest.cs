@@ -17,7 +17,7 @@ namespace BiomeMap
             CheckNearby(startX, startY, size);           
         }
 
-        public override void printTile(int topPosX, int topPosY)
+        public override void PrintTile(int topPosX, int topPosY)
         {
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.CursorLeft = (x * 2) + topPosX * 2;
@@ -25,7 +25,7 @@ namespace BiomeMap
             Console.Write("██");
         }
 
-        public override void spread(int x, int y, int startX, int startY, int size)
+        public override void Spread(int x, int y, int startX, int startY, int size)
         {
             x = Math.Min(Math.Abs(x), tiles.GetLength(0) - 1);
             y = Math.Min(Math.Abs(y), tiles.GetLength(1) - 1);
@@ -44,9 +44,9 @@ namespace BiomeMap
                 amount++;
                 int xDif = startX - x;
                 int yDif = startY - y;
+
                 if (Tile.random.Next(size) > Math.Sqrt(xDif * xDif + yDif * yDif))
                 {
-
                     newTile = new Forest(x, y, startX, startY, size);
                     //this.printTile(0, 0);
                 }

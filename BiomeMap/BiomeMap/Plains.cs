@@ -14,7 +14,7 @@ namespace BiomeMap
             biome = "plains";
             
         }
-        public override void printTile(int topPosX, int topPosY)
+        public override void PrintTile(int topPosX, int topPosY)
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.CursorLeft = (x * 2) + topPosX * 2;
