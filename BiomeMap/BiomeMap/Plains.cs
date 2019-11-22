@@ -8,7 +8,7 @@ namespace BiomeMap
 {
     class Plains:Tile
     {
-        public Plains(int x, int y, int startX, int startY, int size) : base(x, y, startX, startY, size)
+        public Plains(int x, int y) : base(x,y) 
         {
             display = "H";
             biome = "plains";

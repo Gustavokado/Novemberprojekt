@@ -16,15 +16,15 @@ namespace BiomeMap
         public string biome;
         public static Random random = new Random();
         //public static List<Tile> tiles = new List<Tile> { };
-        public static Tile[,] tiles = new Tile[150, 80];
+        public static Tile[,] tiles = new Tile[100, 50];
         public static int amount = 0;
         public bool noSpread = false;
 
-        public Tile(int xPos, int yPos, int startX, int startY, int size)
+        public Tile(int xPos, int yPos)
         {
             x = xPos;
             y = yPos;
-            tiles[x, y] = this;         
+            tiles[x, y] = this;
         }
 
         public void CheckNearby(int startX, int startY, int size)
