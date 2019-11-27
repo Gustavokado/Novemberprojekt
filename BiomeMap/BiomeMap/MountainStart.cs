@@ -12,16 +12,9 @@ namespace BiomeMap
 
         List<int> anglesToMountains = new List<int>();
 
-        public MountainStart(int x, int y, int startX, int startY, int size, bool isStartTile) : base(x, y, startX, startY, size, isStartTile)
+        public MountainStart(int x, int y, int startX, int startY, int size, bool isStartTile) : base(x, y, startX, startY, size, isStartTile,false)
         {
-            CheckForMountainsInRange(15);
-
-            for (int i = 0; i < mountainsInRange.Count; i++)
-            {
-                anglesToMountains.Add(CalculateAngles(x, y, mountainsInRange[i].x, mountainsInRange[i].y));
-
-                new MountainBetween(x, y, startX, startY, size, isStartTile, mountainsInRange[i].x, mountainsInRange[i].y);
-            }           
+                    
         }
 
         void CheckForMountainsInRange(int range)
@@ -38,6 +31,23 @@ namespace BiomeMap
                         mountainsInRange.Add(mountains[i]);
                     }
                 }
+            }
+        }
+
+        public void ConnectMountains(int startX, int startY, int size)
+        {
+            CheckForMountainsInRange(20);
+
+            for (int i = 0; i < mountainsInRange.Count; i++)
+            {
+                anglesToMountains.Add(CalculateAngles(x, y, mountainsInRange[i].x, mountainsInRange[i].y));
+
+                int xDif = x - mountainsInRange[i].x;
+                int yDif = y - mountainsInRange[i].y;
+
+                double distance = Math.Sqrt(xDif * xDif + yDif * yDif);
+
+                new MountainBetween(x, y, startX, startY, size, isStartTile, mountainsInRange[i].x, mountainsInRange[i].y, distance);
             }
         }
     }

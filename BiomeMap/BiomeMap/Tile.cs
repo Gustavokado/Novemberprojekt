@@ -20,10 +20,13 @@ namespace BiomeMap
         public static int amount = 0;
         public bool noSpread = false;
 
-        public Tile(int xPos, int yPos)
+        public Tile(int xPos, int yPos, bool start)
         {
-            x = xPos;
-            y = yPos;
+            isStartTile = start;
+
+            x = (xPos < 0) ? 0 : ((xPos > tiles.GetLength(0)-1) ? tiles.GetLength(0)-1 : xPos);           
+            y = (yPos < 0) ? 0 : ((yPos > tiles.GetLength(1)-1) ? tiles.GetLength(1)-1 : yPos);
+
             tiles[x, y] = this;
         }
 

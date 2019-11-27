@@ -10,7 +10,7 @@ namespace BiomeMap
     class Forest:Tile
     {
         
-        public Forest(int x, int y, int startX, int startY, int size) : base(x,y)
+        public Forest(int x, int y, int startX, int startY, int size) : base(x,y,true)
         {
             biome = "forest";
             display = "T";
