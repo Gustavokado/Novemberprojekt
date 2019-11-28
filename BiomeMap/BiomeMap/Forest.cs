@@ -9,20 +9,11 @@ namespace BiomeMap
 {
     class Forest:Tile
     {
-        
         public Forest(int x, int y, int startX, int startY, int size) : base(x,y,true)
         {
             biome = "forest";
-            display = "T";
+            printColor = ConsoleColor.DarkGreen;
             CheckNearby(startX, startY, size);           
-        }
-
-        public override void PrintTile(int topPosX, int topPosY)
-        {
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.CursorLeft = (x * 2) + topPosX * 2;
-            Console.CursorTop = y + topPosY;
-            Console.Write("██");
         }
 
         public override void Spread(int x, int y, int startX, int startY, int size)
@@ -34,10 +25,6 @@ namespace BiomeMap
 
             if (newTile.biome != "forest" && !newTile.noSpread)
             {
-                
-
-                //Thread.Sleep(5);
-
                 Console.CursorTop = 1;
                 Console.CursorLeft = 1;
                 Console.WriteLine(amount);
@@ -48,7 +35,6 @@ namespace BiomeMap
                 if (random.Next(size) > Math.Sqrt(xDif * xDif + yDif * yDif))
                 {
                     new Forest(x, y, startX, startY, size);
-                    //this.printTile(0, 0);
                 }
                 newTile.noSpread = true;
             }                      

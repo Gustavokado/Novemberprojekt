@@ -10,15 +10,13 @@ namespace BiomeMap
     {
         public int x;
         public int y;
-        bool isVisible;
         public bool isStartTile;
-        protected string display;
         public string biome;
         public static Random random = new Random();
-        //public static List<Tile> tiles = new List<Tile> { };
         public static Tile[,] tiles = new Tile[140, 80];
         public static int amount = 0;
         public bool noSpread = false;
+        protected ConsoleColor printColor;
 
         public Tile(int xPos, int yPos, bool start)
         {
@@ -41,16 +39,21 @@ namespace BiomeMap
             }
         }
 
-        public virtual void PrintTile(int topPosX, int topPosY)
+        public void PrintTile(int topPosX, int topPosY)
         {
-            Console.CursorLeft = (x*2)+topPosX*2;
+            Console.ForegroundColor = printColor;
+            Console.CursorLeft = (x * 2) + topPosX * 2;
             Console.CursorTop = y + topPosY;
-            Console.Write("T");
+            Console.Write("██");
         }
 
         public virtual void Spread(int x, int y, int startX, int startY, int size)
         {
-
+        }  
+        
+        public string GetBiomeType()
+        {
+            return biome;
         }
 
         
