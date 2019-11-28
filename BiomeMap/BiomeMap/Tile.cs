@@ -16,14 +16,17 @@ namespace BiomeMap
         public string biome;
         public static Random random = new Random();
         //public static List<Tile> tiles = new List<Tile> { };
-        public static Tile[,] tiles = new Tile[100, 50];
+        public static Tile[,] tiles = new Tile[140, 80];
         public static int amount = 0;
         public bool noSpread = false;
 
-        public Tile(int xPos, int yPos)
+        public Tile(int xPos, int yPos, bool start)
         {
-            x = xPos;
-            y = yPos;
+            isStartTile = start;
+
+            x = (xPos < 0) ? 0 : ((xPos > tiles.GetLength(0)-1) ? tiles.GetLength(0)-1 : xPos);           
+            y = (yPos < 0) ? 0 : ((yPos > tiles.GetLength(1)-1) ? tiles.GetLength(1)-1 : yPos);
+
             tiles[x, y] = this;
         }
 

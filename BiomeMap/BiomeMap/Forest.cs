@@ -10,7 +10,7 @@ namespace BiomeMap
     class Forest:Tile
     {
         
-        public Forest(int x, int y, int startX, int startY, int size) : base(x,y)
+        public Forest(int x, int y, int startX, int startY, int size) : base(x,y,true)
         {
             biome = "forest";
             display = "T";
@@ -47,7 +47,7 @@ namespace BiomeMap
 
                 if (random.Next(size) > Math.Sqrt(xDif * xDif + yDif * yDif))
                 {
-                    tiles[x, y] = new Forest(x, y, startX, startY, size);
+                    new Forest(x, y, startX, startY, size);
                     //this.printTile(0, 0);
                 }
                 newTile.noSpread = true;

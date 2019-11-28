@@ -12,6 +12,7 @@ namespace BiomeMap
         public static List<Mountain> mountains = new List<Mountain>();
 
 
+
         List<Mountain> mountainsInRange = new List<Mountain>();
 
 
@@ -34,13 +35,23 @@ namespace BiomeMap
 
         
         public Mountain(int x, int y, int startX, int startY, int size, bool isStartTile) : base(x,y)
+
+        List<Mountain> mountainsInRange = new List<Mountain>();
+
+        public Mountain(int x, int y, int startX, int startY, int size, bool isStartTile, bool isMiddleTile) : base(x,y,isStartTile)
+
         {
             biome = "mountain";
             display = "A";
 
             mountains.Add(this);
-            
-            if (!isStartTile)           
+
+            if (isStartTile)
+            {
+                CheckForMountainsInRange(25);
+            }
+                       
+            else if(!isMiddleTile)          
             {                
                 CheckNearby(startX, startY, size);
             }           
@@ -62,9 +73,8 @@ namespace BiomeMap
 
             Tile newTile = tiles[x, y];
 
-            int xDif = startX - x;
-            int yDif = startY - y;
 
+            // 
             if (newTile.biome != "mountain" && !newTile.noSpread)
             {
                 //Thread.Sleep(5);
@@ -73,12 +83,15 @@ namespace BiomeMap
                 Console.CursorLeft = 1;
                 Console.WriteLine(Tile.amount);
                 amount++;
-                
-                if (Tile.random.Next(size) / (Math.Sqrt(xDif * xDif + yDif * yDif)) > Math.Sqrt(xDif * xDif + yDif * yDif))
+
+                int xDif = startX - x;
+                int yDif = startY - y;
+
+                if (random.Next(size) / (Math.Sqrt(xDif * xDif + yDif * yDif)) > Math.Sqrt(xDif * xDif + yDif * yDif))
                 {
 
-                    //newTile = new Mountain(x, y, startX, startY, size, false);
-                    //this.printTile(0, 0);
+                    new Mountain(x, y, startX, startY, size, false, false);
+                    
                 }
             }
 
@@ -89,11 +102,41 @@ namespace BiomeMap
         {
             float xDiff = x2 - x1;
             float yDiff = y2 - y1;
-            int angleDegrees = Convert.ToInt32(Math.Atan2(yDiff, xDiff) * 180.0 / Math.PI);
+            int angleDegrees = Convert.ToInt32(Math.Atan2(yDiff, xDiff) * 180 / Math.PI);
             
             return angleDegrees;
         }
+
+        public void CheckForMountainsInRange(int range)
+        {
+            for (int i = 0; i < mountains.Count; i++)
+            {
+                int xDif = x - mountains[i].x;
+                int yDif = y - mountains[i].y;
+
+                if (Math.Sqrt(xDif * xDif + yDif * yDif) < range)
+                {
+                    if (mountains[i] != this && mountains[i].isStartTile)
+                    {
+                        ConnectMountains(mountains[i].x, mountains[i].y);
+                    }
+                }
+            }
+        }
        
-       
+        public void ConnectMountains(int targetX, int targetY)
+        {
+            for (float t = 0; t <= 1; t+=0.01f)
+            {
+                int xPos = Convert.ToInt32(targetX - (targetX * t - x * t));
+                int yPos = Convert.ToInt32(targetY - (targetY * t - y * t));
+
+                if (tiles[xPos ,yPos].biome!="Mountain")
+                {
+                    tiles[xPos, yPos] = new Mountain(xPos,yPos,0,0,0,false,true);
+                }
+            }
+            
+        }
     }
 }
