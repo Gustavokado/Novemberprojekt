@@ -49,7 +49,7 @@ namespace BiomeMap
             //------------------Mountain stuff------------------//
 
 
-            int mountainsAmount = Tile.random.Next(5, 30);
+            int mountainsAmount = Tile.random.Next(10, 35);
 
             List<MountainStart> startMountains = new List<MountainStart>();
         
@@ -62,28 +62,11 @@ namespace BiomeMap
             }
             
 
-            
-            /*for (int i = 0; i < startMountains.Count; i++)
-            {
-                startMountains[i].ConnectMountains(startMountains[i].x,startMountains[i].y,0);               
-            }*/
-
-            for (int i = 0; i < Mountain.mountains.Count; i++)
-            {
-                //Mountain.mountains[i].CheckNearby(Mountain.mountains[i].x,Mountain.mountains[i].y,Tile.random.Next(5,18));
-            }
-
-            /* */
-
-
             for (int y = 0; y < tiles.GetLength(1); y++)
             {
                 for (int x = 0; x < tiles.GetLength(0); x++)
                 {
-                    tiles[x, y].PrintTile(0, 0);
-
-
-                    // Thread.Sleep(5);
+                    tiles[x, y].PrintTile(0, 0);  
                 }
             }
 
@@ -92,7 +75,7 @@ namespace BiomeMap
 
             for (int i = 0; i < Mountain.mountains.Count; i++)
             {
-                Mountain.mountains[i].CheckNearby(Mountain.mountains[i].x, Mountain.mountains[i].y, Tile.random.Next(20, 40));
+                Mountain.mountains[i].CheckNearby(Mountain.mountains[i].x, Mountain.mountains[i].y, Tile.random.Next(15, 50));
             }
 
 

@@ -16,7 +16,7 @@ namespace BiomeMap
         public string biome;
         public static Random random = new Random();
         //public static List<Tile> tiles = new List<Tile> { };
-        public static Tile[,] tiles = new Tile[100, 50];
+        public static Tile[,] tiles = new Tile[140, 80];
         public static int amount = 0;
         public bool noSpread = false;
 

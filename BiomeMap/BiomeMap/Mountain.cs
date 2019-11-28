@@ -21,7 +21,7 @@ namespace BiomeMap
 
             if (isStartTile)
             {
-                CheckForMountainsInRange(15);
+                CheckForMountainsInRange(25);
             }
                        
             else if(!isMiddleTile)          
@@ -45,9 +45,8 @@ namespace BiomeMap
 
             Tile newTile = tiles[x, y];
 
-            int xDif = startX - x;
-            int yDif = startY - y;
 
+            // 
             if (newTile.biome != "mountain" && !newTile.noSpread)
             {
                 //Thread.Sleep(5);
@@ -56,12 +55,15 @@ namespace BiomeMap
                 Console.CursorLeft = 1;
                 Console.WriteLine(Tile.amount);
                 amount++;
-                
-                if (Tile.random.Next(size) / (Math.Sqrt(xDif * xDif + yDif * yDif)) > Math.Sqrt(xDif * xDif + yDif * yDif))
+
+                int xDif = startX - x;
+                int yDif = startY - y;
+
+                if (random.Next(size) / (Math.Sqrt(xDif * xDif + yDif * yDif)) > Math.Sqrt(xDif * xDif + yDif * yDif))
                 {
 
-                    newTile = new Mountain(x, y, startX, startY, size, false, false);
-                    //this.printTile(0, 0);
+                    new Mountain(x, y, startX, startY, size, false, false);
+                    
                 }
             }
 

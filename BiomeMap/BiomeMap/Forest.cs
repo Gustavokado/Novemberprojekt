@@ -47,7 +47,7 @@ namespace BiomeMap
 
                 if (random.Next(size) > Math.Sqrt(xDif * xDif + yDif * yDif))
                 {
-                    tiles[x, y] = new Forest(x, y, startX, startY, size);
+                    new Forest(x, y, startX, startY, size);
                     //this.printTile(0, 0);
                 }
                 newTile.noSpread = true;
