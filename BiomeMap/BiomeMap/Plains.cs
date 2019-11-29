@@ -8,11 +8,10 @@ namespace BiomeMap
 {
     class Plains:Tile
     {        
-        public Plains(int x, int y) : base(x,y,true) 
+        public Plains(int x, int y) : base(x,y,true) // bastilen som först fyller arrayen, behöver ingen egen funktionalitet förutom sin egen färg
         {          
             biome = "plains";
             printColor = ConsoleColor.Green;
-        }
-       
+        }       
     }
 }
